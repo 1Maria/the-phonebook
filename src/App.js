@@ -11,10 +11,22 @@ const App = () => {
     setNewName(event.target.value)
   }
 
+  const addName = (event) => {
+    event.preventDefault();
+    const nameObject = {
+      name: newName, 
+      id: persons.length + 1
+    }
+
+    setPersons(persons.concat(nameObject));
+    setNewName('');
+  }
+
+
   return (
     <div>
       <h2>Phonebook</h2>
-      <form onSubmit>
+      <form onSubmit={addName}>
         <div>
           name: 
             <input 
