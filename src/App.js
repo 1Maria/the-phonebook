@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', id: 1 }//, {name: 'Minnie Mouse'}
+    { name: 'Arto Hellas'}//, {name: 'Minnie Mouse'}
   ]);
   const [newName, setNewName] = useState('');
 
   const peopleList = persons.map((person) => 
-    <div key={person.id}>
+    <div key={person.name}>
       {person.name}
     </div>
   );
@@ -15,8 +15,7 @@ const App = () => {
   const addName = (event) => {
     event.preventDefault();
     const nameObject = {
-      name: newName, 
-      id: persons.length + 1
+      name: newName
     }
 
     setPersons(persons.concat(nameObject));
