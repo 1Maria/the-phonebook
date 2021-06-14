@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Search from './components/Search';
+import AddContact from './components/AddContact';
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -9,35 +10,7 @@ const App = () => {
     { name: 'Dan Abramov', number: '12-43-234345' },
     { name: 'Mary Poppendieck', number: '39-23-6423122' }
   ]);
-  const [newName, setNewName] = useState('');
-  const [newNumber, setNewNumber] = useState('');
   const [search, setSearch] = useState('');
-
-  const addContact = (event) => {
-    event.preventDefault();
-    const contactObject = {
-      name: newName, 
-      number: newNumber,
-    }
-
-    if (!(persons.find(person => person.name === contactObject.name))) {
-      setPersons(persons.concat(contactObject));
-      setNewName('');
-      setNewNumber('');
-    } else {
-      return alert(`${contactObject.name} is already added to phonebook`);
-    }
-  }
-
-  const handleNameChange = (event) => {
-    console.log(event.target.value);
-    setNewName(event.target.value)
-  }
-
-  const handleNumberChange = (event) => {
-    console.log(event.target.value);
-    setNewNumber(event.target.value);
-  }
 
   const handleSearchChange = (event) => {
     console.log(event.target.value);
@@ -57,25 +30,7 @@ const App = () => {
           />
       </div>
       <Header name='add a new' />
-      <form onSubmit={addContact}>
-        <div>
-          name: 
-            <input 
-              value={newName}
-              onChange={handleNameChange}
-            />
-        </div>
-        <div>
-          number: 
-            <input 
-              value={newNumber}
-              onChange={handleNumberChange}
-            />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <AddContact persons={persons} setPersons={setPersons} />
       <Header name='Numbers' />
       <div>
           {searchResults.map(search => 
