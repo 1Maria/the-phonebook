@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from './components/Header';
 import Search from './components/Search';
 
 const App = () => {
@@ -47,7 +48,7 @@ const App = () => {
 
   return (
     <div>
-      <h2>Phonebook</h2>
+      <Header name='Phonebook' />
       <div>
         filter shown with  
           <input
@@ -55,7 +56,7 @@ const App = () => {
             onChange={handleSearchChange}
           />
       </div>
-      <h2>add a new</h2>
+      <Header name='add a new' />
       <form onSubmit={addContact}>
         <div>
           name: 
@@ -75,7 +76,7 @@ const App = () => {
           <button type="submit">add</button>
         </div>
       </form>
-      <h2>Numbers</h2>
+      <Header name='Numbers' />
       <div>
           {searchResults.map(search => 
            <Search key={search.name} search={search} />)}
