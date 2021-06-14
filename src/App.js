@@ -17,12 +17,6 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('');
   const [search, setSearch] = useState('');
 
-  const peopleList = persons.map((person) => 
-    <div key={person.name}>
-      {person.name} {person.number}
-    </div>
-  );
-
   const addContact = (event) => {
     event.preventDefault();
     const contactObject = {
@@ -60,16 +54,12 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <div>
-        filter shown with 
+        filter shown with  
           <input
             value={search}
             onChange={handleSearchChange}
           />
       </div>
-      <ul>
-          {searchResults.map(search => 
-           <Search key={search.name} search={search} />)}
-      </ul>
       <h2>add a new</h2>
       <form onSubmit={addContact}>
         <div>
@@ -91,7 +81,10 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      <div>{peopleList}</div>
+      <div>
+          {searchResults.map(search => 
+           <Search key={search.name} search={search} />)}
+      </div>
     </div>
   );
 }
