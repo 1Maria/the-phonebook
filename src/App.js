@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-
-const Search = ({ search }) => {
-  return (
-    <div>{search.name} {search.number}</div>
-  );
-}
+import Search from './components/Search';
 
 const App = () => {
   const [persons, setPersons] = useState([
