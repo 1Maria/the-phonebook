@@ -12,18 +12,18 @@ const AddContact = ({ persons, setPersons }) => {
             number: newNumber,
         }
 
-        if (!(persons.find(person => person.name === contactObject.name))) {
-            setPersons(persons.concat(contactObject));
-            setNewName('');
-            setNewNumber('');
-        } else {
-            return alert(`${contactObject.name} is already added to phonebook`);
-        }
-
         axios
           .post('http://localhost:3021/persons', contactObject)
           .then(response => {
             console.log(response);
+
+            if (!(persons.find(person => person.name === contactObject.name))) {
+              setPersons(persons.concat(contactObject));
+              setNewName('');
+              setNewNumber('');
+            } else {
+              return alert(`${contactObject.name} is already added to phonebook`);
+            }
           })
     }
 
