@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useState} from 'react';
 
 const AddContact = ({ persons, setPersons }) => {
@@ -18,6 +19,12 @@ const AddContact = ({ persons, setPersons }) => {
         } else {
             return alert(`${contactObject.name} is already added to phonebook`);
         }
+
+        axios
+          .post('http://localhost:3021/persons', contactObject)
+          .then(response => {
+            console.log(response);
+          })
     }
 
     const handleNameChange = (event) => {
