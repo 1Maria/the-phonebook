@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Search from './components/Search';
 import AddContact from './components/AddContact';
-import axios from 'axios';
+import contactService from './services/contacts';
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -10,8 +10,8 @@ const App = () => {
 
   useEffect(() => {
     console.log('effect');
-    axios
-      .get('http://localhost:3021/persons')
+    contactService
+      .getAll()
       .then(response => {
         console.log('promise fulfilled');
         setPersons(response.data);
